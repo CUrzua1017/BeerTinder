@@ -9,41 +9,35 @@ import InputBeer from './views/InputBeer';
 import BrowseBeers from './views/BrowseBeers';
 import EditBeer from './views/EditBeer';
 import DisplayBeer from './views/DisplayBeer';
-// import NoMatch from './components/NoMatch';
-// import Layout from './components/Layout';
 import Login from './views/Login.jsx';
 import NewUser from './views/NewUser.jsx';
 // import axios from 'axios';
+// import TinderCards from './components/TinderCards';
+// import TinderCard from 'react-tinder-card';
 
-// // Add a response interceptor
-// axios.interceptors.response.use(
-//   response=>response,
-//   err => { 
-//     navigate('/login');
-//     return err
-//   }//if this callback has an err, will redirect to the login
-// );
+import Header from './components/Header'
+// import BeerCards from './components/BeerCards'
 
 
 function App() {
   return (
     <div className="App">
-      {/* <React.Fragment> */}
-
-        <Button>Test Button</Button> 
+        <Header />
+        {/* <Button>Test Button</Button>  */}
 
         <Router>
           <Login path="/login"/>
           <NewUser path="/newuser"/>
-          <Dashboard path = "/beers"/>
+          <Dashboard path = "/beers" />
+              {/* <TinderCard />
+          </Dashboard> */}
+          {/* <TinderCards path ="/beers/card" /> */}
           <Redirect from ="/" to= "/beers" noThrow/>
           <InputBeer path = "/beers/new"/>
           <BrowseBeers path = "/beers/list" />
           <EditBeer path = "/beers/:id/edit" />
           <DisplayBeer path = "/beers/:id/details" />
-          {/* <NoMatch path = {NoMatch} /> */}
         </Router>
-      {/* </React.Fragment> */}
     </div>
   );
 }

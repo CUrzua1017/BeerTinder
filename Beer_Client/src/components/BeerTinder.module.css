@@ -1,0 +1,16 @@
+
+
+
+
+/* BEER FORM */
+.beerForm{
+    width: 400px;
+    margin: 0px auto;
+    outline: 1px solid black;
+    padding: 20px;
+}
+.box1{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}

@@ -1,11 +1,10 @@
 
 
-
-
 /* BEER FORM */
 .beerForm{
-    width: 400px;
-    margin: 0px auto;
+    vertical-align: center;
+    /* width: 400px; */
+    margin: 10px auto;
     outline: 1px solid black;
     padding: 20px;
 }
@@ -13,4 +12,6 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    color: white;
+    text-emphasis: bold;
 }

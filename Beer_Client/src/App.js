@@ -11,6 +11,7 @@ import EditBeer from './views/EditBeer';
 import DisplayBeer from './views/DisplayBeer';
 import Login from './views/Login.jsx';
 import NewUser from './views/NewUser.jsx';
+import Landing from './views/Landing.js';
 // import axios from 'axios';
 // import TinderCards from './components/TinderCards';
 // import TinderCard from 'react-tinder-card';
@@ -31,8 +32,8 @@ function App() {
           <Dashboard path = "/beers" />
               {/* <TinderCard />
           </Dashboard> */}
-          {/* <TinderCards path ="/beers/card" /> */}
-          <Redirect from ="/" to= "/beers" noThrow/>
+          <Landing path ="/beers/welcome" />
+          <Redirect from ="/" to= "/beers/welcome" noThrow/>
           <InputBeer path = "/beers/new"/>
           <BrowseBeers path = "/beers/list" />
           <EditBeer path = "/beers/:id/edit" />

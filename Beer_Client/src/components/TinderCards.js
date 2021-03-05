@@ -65,13 +65,13 @@ function TinderCards() {
                 </CardActionArea>
                 <CardActions>
                     <IconButton>
-                        <CheckCircleOutlineIcon fontSize="large"/>
+                        <CheckCircleOutlineIcon fontSize="small"/>
                     </IconButton>
                     <IconButton>
-                        <BookmarkBorderRoundedIcon fontSize="large"/>
+                        <BookmarkBorderRoundedIcon fontSize="small"/>
                     </IconButton>
                     <IconButton>
-                        <ShareRoundedIcon fontSize="large"/>
+                        <ShareRoundedIcon fontSize="small"/>
                     </IconButton>
                 </CardActions>
                 </Card>

@@ -1,0 +1,15 @@
+.landing-container {
+    /* background-image: url('./video.mp4'); */
+    vertical-align: center;
+    color:black;
+}
+
+img {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: -8px;
+    margin-bottom: 20px;
+}

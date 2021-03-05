@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import { Link,navigate } from '@reach/router'
+import styles from '../components/BeerTinder.module.css';
 
 export default function Login(){
     const [email, setEmail]=useState('');
@@ -22,21 +23,24 @@ export default function Login(){
 
     return(
         <div>
-            <Link to={"/newuser/"}>Create Account</Link>
+
             <h1>Login/Reg</h1>
+        <div className={styles.beerForm}>
+            <Link to={"/newuser/"}>Create Account</Link>
             {err && (<p style={{color:'red'}}>{err}</p>)}
             <form onSubmit={handleSubmit}>
 
-                <div>
+                <div className={styles.box1}>
                     <label>Email</label>
                     <input name="email" value={email} onChange={e =>setEmail(e.target.value)}/>
                 </div>
-                <div>
+                <div className={styles.box1}>
                     <label>Password</label>
                     <input type="password" name="password" value={password} onChange={e =>setPassword(e.target.value)}/>
                 </div>
                 <button>Submit</button>
             </form>
+        </div>
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 import {navigate} from '@reach/router';
+import styles from './BeerTinder.module.css';
 
 function BeerForm(props){
     const [name, setName] = useState(props.name);
@@ -41,25 +42,25 @@ function BeerForm(props){
             })
 	}
 	return(
-		<div>
+		<div className={styles.beerForm}>
 			{errors.map((err, idx) => 
                 <p key = {idx} style = {{color: 'red'}}>{err}</p>)}
 			<form onSubmit = {handleSubmit}>
-				<div>
+				<div className={styles.box1}>
 					<label> Beer Name: </label>
 					<input
 						value = {name}
 						onChange = {event => setName(event.target.value)}
 					/>
 				</div>
-                <div>
+                <div className={styles.box1}>
 					<label> Brewery: </label>
 					<input
 						value = {brewery}
 						onChange = {event => setBrewery(event.target.value)}
 					/>
 				</div>
-                <div>
+                <div className={styles.box1}>
 					<label> Beer Type: </label>
                     <select value={beerType} onChange={event =>setBeerType(event.target.value)}>
                         <option>Please Select</option>
@@ -74,28 +75,28 @@ function BeerForm(props){
                         <option value ="Wheat"> Wheat </option>
                     </select>
 				</div>
-                <div>
+                <div className={styles.box1}>
 					<label> Description: </label>
 					<input
 						value = {description}
 						onChange = {event => setDescription(event.target.value)}
 					/>
 				</div>
-                <div>
+                <div className={styles.box1}>
 					<label> ABV: </label>
 					<input
 						value = {abv}
 						onChange = {event => setAbv(event.target.value)}
 					/>
 				</div>
-                <div>
+                <div className={styles.box1}>
 					<label> IBU: </label>
 					<input
 						value = {ibu}
 						onChange = {event => setIbu(event.target.value)}
 					/>
 				</div>
-                <div>
+                <div className={styles.box1}>
 					<label> Tasting Notes: </label>
 					<input
 						value = {tastingNotes}
@@ -109,7 +110,7 @@ function BeerForm(props){
 						onChange = {event => setAvailability(event.target.value)}
 					/>
 				</div> */}
-                <div>
+                <div className={styles.box1}>
 					<label> Image: </label>
 					<input
 						value = {image}

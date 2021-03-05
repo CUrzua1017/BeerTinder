@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu';
+import Logo from '../images/beer_tinder_logo.png';
 
 function Header() {
     const useStyles = makeStyles((theme) => ({
@@ -35,7 +36,7 @@ function Header() {
                 <Link to="/beers/welcome">
                     <img 
                         className="header_logo"
-                        src = {process.env.PUBLIC_URL + '/images/beer_tinder_logo.png'} 
+                        src = {Logo}
                         alt ="Beer Tinder Logo" />
                 </Link>
                 <Link to="/beers">

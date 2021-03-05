@@ -4,6 +4,7 @@ import './Landing.css'
 import Video from "./video.mp4";
 import Button from '@material-ui/core/Button';
 import {Link} from '@reach/router';
+import Logo from '../images/beer_tinder_logo.png';
 
 
 function Landing(props){
@@ -24,7 +25,7 @@ function Landing(props){
             >
                 <source src={Video} type="video/mp4" />
             </video>
-            <img src={process.env.PUBLIC_URL + '/images/beer_tinder_logo.png'} alt="Beer Tinder Logo"/>
+            <img src= {Logo} alt="Beer Tinder Logo"/>
             <h3>Find the perfect beer match to bring to your next</h3>
             <h2>Party, Adventure, or Netflix n Chill.</h2>
             <div>

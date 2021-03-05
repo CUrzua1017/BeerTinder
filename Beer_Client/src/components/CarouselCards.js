@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-
-// import './TinderCards.css'
+import React, {useState} from "react";
+import SwipeableViews from "react-swipeable-views";
+import Image from "./CarouselImages";
+import Controls from "./CarouselControls";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -19,9 +20,56 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 
-function TinderCards() {
+// const styles = {
+//   slide: {
+//     minHeight: 100,
+//     color: "#fff"
+//   },
+//   slide1: {},
+//   slide2: {},
+//   slide3: {}
+// };
 
-    const [beerCard, setBeerCard] = useState([
+const styles = makeStyles((theme) => ({
+    image: {
+        width: "80%",
+        height: "auto"
+    },
+    img: {
+        width: "80%",
+        height: "auto"
+    },
+    // titleBackground: {
+    //     backgroundColor: theme.palette.common.black,
+    //     top: -130,
+    //     position: "relative",
+    //     opacity: 0.4,
+    //     height: 70
+    // },
+    // title: {
+    //     position: "relative",
+    //     top: -80,
+    //     zIndex: 100
+    // },
+    cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+    },
+    card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    },
+    cardMedia: {
+    paddingTop: '56.25%', // 16:9
+    },
+    cardContent: {
+    flexGrow: 1,
+    },
+
+}));
+function CarouselCards(){
+    const beerCard = [
         {
             name: 'Fremont Lush IPA',
             url: 'https://www.beeroftheday.com/photos/lush_ipa-2689_0.jpg'
@@ -34,59 +82,30 @@ function TinderCards() {
             name: 'Georgetown Bodi',
             url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyIJ9oYXsMTmLVkb10AqmMM_VUCw7RxXmYXQ&usqp=CAU'
         }
-    ]);
-    const useStyles = makeStyles((theme) => ({
-        icon: {
-            marginRight: theme.spacing(2),
-            },
-            heroContent: {
-            backgroundColor: theme.palette.background.paper,
-            padding: theme.spacing(8, 0, 6),
-            },
-            heroButtons: {
-            marginTop: theme.spacing(4),
-            },
-            cardGrid: {
-            paddingTop: theme.spacing(8),
-            paddingBottom: theme.spacing(8),
-            },
-            card: {
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            },
-            cardMedia: {
-            paddingTop: '56.25%', // 16:9
-            },
-            cardContent: {
-            flexGrow: 1,
-            },
+    ];
+    const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const classes = styles();
 
-        }));
+    // class CarouselCards extends React.Component {
         
-        const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        const classes = useStyles();
+        function handleChangeIndex() {
+            // const state = {
+            //   index: 1
+            // };
+            this.setState({ index });
+        };
+
+          const { index } = this.state;
 
     return (
-        <div className="container">
-        <React.Fragment>
-        <CssBaseline />
-        <main>
-          {/* Hero unit */}
-            <div className={classes.heroContent}>
-                <Container maxWidth="sm">
-                    <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                        Beer Dashboard
-                    </Typography>
-                    <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                        Something short and leading about the collection below—its contents, the creator, etc.
-                        Make it short and sweet, but not too short so folks don't simply skip over it
-                        entirely.
-                    </Typography>
-                </Container>
-                <Container className={classes.cardGrid} maxWidth="md">
-                    {/* End hero unit */}
-                    <Grid container spacing={4}>
+        <div>
+          <SwipeableViews
+            enableMouseEvents
+            resistance
+            index={index}
+            onChangeIndex={this.handleChangeIndex}
+          >
+              <Grid container spacing={4}>
                     {beerCard.map((beerCard) => (
                         <Grid item key={beerCard} xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
@@ -118,17 +137,22 @@ function TinderCards() {
                         </Grid>
                     ))}
                     </Grid>
-                </Container>
-            </div>
-        </main>
-
-        </React.Fragment>
-
-
-
-        
+            {/* {beerCard.map((beerCard) => (
+              <div key={beerCard} style={Object.assign({}, styles.slide)}>
+                <Image title={beerCard.name} src={beerCard.url} />
+              </div>
+            ))} */}
+          </SwipeableViews>
+          <Controls
+            itemsnumber={beerCard.length}
+            index={beerCard}
+            handleChangeIndex={this.handleChangeIndex}
+          />
         </div>
-    );
-}
-export default TinderCards;
+      );
+    }
+// }}
 
+  
+export default CarouselCards;
+  

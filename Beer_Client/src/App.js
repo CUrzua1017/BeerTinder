@@ -17,6 +17,7 @@ import Landing from './views/Landing.js';
 // import TinderCard from 'react-tinder-card';
 
 import Header from './components/Header'
+import Carousell from './components/CarouselCards'
 // import BeerCards from './components/BeerCards'
 
 
@@ -30,6 +31,7 @@ function App() {
           <Login path="/login"/>
           <NewUser path="/newuser"/>
           <Dashboard path = "/beers" />
+          <Carousell path = "/carousel" />
               {/* <TinderCard />
           </Dashboard> */}
           <Landing path ="/beers/welcome" />

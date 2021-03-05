@@ -1,12 +1,12 @@
 import React from 'react';
 // import { Link } from '@reach/router';
 // import LogOutButton from '../components/LogOutButton.jsx';
+
 import TinderCards from '../components/TinderCards.js';
 
 function Dashboard(props){
     return(
         <div>
-            <h1>DASHBOARD </h1>
             <TinderCards />
         </div>
     )

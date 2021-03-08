@@ -1,5 +1,4 @@
 import RegistrationForm from '../components/RegistrationForm.jsx';
-import { Link } from '@reach/router';
 
 const NewUser=()=>{
 
@@ -9,4 +8,5 @@ const NewUser=()=>{
         </div>
     );
 }
+
 export default NewUser;

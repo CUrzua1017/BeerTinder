@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {navigate} from '@reach/router';
 import styles from './BeerTinder.module.css';
@@ -10,15 +10,16 @@ function BeerForm(props){
     const [description, setDescription] = useState(props.description);
     const [abv, setAbv] = useState(props.abv);
     const [ibu, setIbu] = useState(props.ibu);
-    // const [availability, setAvailability] = useState(props.availability);
+    const [availability, setAvailability] = useState(props.availability);
     const [image, setImage] = useState(props.image);
     const [tastingNotes, setTastingNotes] = useState(props.tastingNotes);
     
     const [errors, setErrors] = useState([]);
 
 	function handleSubmit(event){
+		console.log("handle submit")
 		event.preventDefault();
-		console.log('defaut prevented')
+		console.log('default prevented')
 		axios[props.method](props.url, {
             name,
             brewery,
@@ -26,10 +27,11 @@ function BeerForm(props){
             description,
             abv,
             ibu,
-            // availability,
+            availability,
             image,
 			tastingNotes,
 		})
+			// console.log("before .then")
 			.then(() => navigate('/beers/list'))
 			.catch(err=>{
                 const errorResponse = err.response.data.errors; 
@@ -64,13 +66,12 @@ function BeerForm(props){
 					<label> Beer Type: </label>
                     <select value={beerType} onChange={event =>setBeerType(event.target.value)}>
                         <option>Please Select</option>
-                        <option value ="Sour"> Sour </option>
                         <option value ="Cider"> Cider </option>
                         <option value ="India Pale Ale"> India Pale Ale </option>
                         <option value ="Lager"> Lager </option>
                         <option value ="Pale Ale"> Pale Ale </option>
                         <option value ="Pilsner"> Pilsner </option>
-                        <option value ="Porter"> Lager </option>
+                        <option value ="Sour"> Sour </option>
                         <option value ="Stout"> Stout </option>
                         <option value ="Wheat"> Wheat </option>
                     </select>
@@ -103,13 +104,13 @@ function BeerForm(props){
 						onChange = {event => setTastingNotes(event.target.value)}
 					/>
 				</div>
-                {/* <div>
+                <div className={styles.box1}>
 					<label> Availability: </label>
 					<input
 						value = {availability}
 						onChange = {event => setAvailability(event.target.value)}
 					/>
-				</div> */}
+				</div>
                 <div className={styles.box1}>
 					<label> Image: </label>
 					<input

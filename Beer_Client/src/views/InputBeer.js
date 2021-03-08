@@ -13,7 +13,7 @@ function InputBeer() {
                 description = ""
                 abv = ""
                 ibu = ""
-                // availability = ""
+                availability = ""
                 image = ""
                 tastingNotes = ""
                 method="post"

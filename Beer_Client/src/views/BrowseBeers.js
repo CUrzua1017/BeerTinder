@@ -4,7 +4,7 @@ import { Link, navigate } from '@reach/router';
 
 function BrowseBeers(){
     const [beerList, setBeerList] = useState(null);
-
+    console.log("Browse Beers page ")
     useEffect(()=>{
         axios.get('http://localhost:8000/api/beers',{ withCredentials:true })
             .then(response => setBeerList(response.data))

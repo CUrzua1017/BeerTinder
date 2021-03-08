@@ -1,24 +1,30 @@
+// system imports
 import React from 'react';
-import './App.css';
 import { Router, Redirect } from '@reach/router';
+// import axios from 'axios';
+
+// design imports
 import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-import Dashboard from './views/Dashboard';
-import InputBeer from './views/InputBeer';
-import BrowseBeers from './views/BrowseBeers';
-import EditBeer from './views/EditBeer';
-import DisplayBeer from './views/DisplayBeer';
-import Login from './views/Login.jsx';
-import NewUser from './views/NewUser.jsx';
-import Landing from './views/Landing.js';
-// import axios from 'axios';
+import './App.css';
+import Carousell from './components/CarouselCards'
+// import BeerCards from './components/BeerCards'
 // import TinderCards from './components/TinderCards';
 // import TinderCard from 'react-tinder-card';
 
+// component imports
 import Header from './components/Header'
-import Carousell from './components/CarouselCards'
-// import BeerCards from './components/BeerCards'
+
+// route imports
+import Landing from './views/Landing.js';
+import NewUser from './views/NewUser.jsx';
+import Login from './views/Login.jsx';
+import Dashboard from './views/Dashboard';
+import BrowseBeers from './views/BrowseBeers';
+import DisplayBeer from './views/DisplayBeer';
+import InputBeer from './views/InputBeer';
+import EditBeer from './views/EditBeer';
+
 
 
 function App() {
@@ -28,18 +34,18 @@ function App() {
         {/* <Button>Test Button</Button>  */}
 
         <Router>
-          <Login path="/login"/>
-          <NewUser path="/newuser"/>
-          <Dashboard path = "/beers" />
-          <Carousell path = "/carousel" />
-              {/* <TinderCard />
-          </Dashboard> */}
-          <Landing path ="/beers/welcome" />
           <Redirect from ="/" to= "/beers/welcome" noThrow/>
-          <InputBeer path = "/beers/new"/>
+
+          <Landing path ="/beers/welcome" />
+          <NewUser path="/newuser"/>
+          <Login path="/login"/>
+          <Dashboard path = "/beers" />
           <BrowseBeers path = "/beers/list" />
-          <EditBeer path = "/beers/:id/edit" />
           <DisplayBeer path = "/beers/:id/details" />
+          <InputBeer path = "/beers/new"/>
+          <EditBeer path = "/beers/:id/edit" />
+
+          <Carousell path = "/carousel" />
         </Router>
     </div>
   );

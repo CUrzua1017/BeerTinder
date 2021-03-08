@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
-import axios from 'axios';
 import { navigate } from '@reach/router';
+import axios from 'axios';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,7 +10,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -19,7 +20,6 @@ export default function Login(){
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
     const [err,setErr]= useState('');
-
 
     function handleSubmit(event){
         event.preventDefault();
@@ -35,34 +35,34 @@ export default function Login(){
 
         const useStyles = makeStyles((theme) => ({
             root: {
-            height: '100vh',
-            backgroundColor: '#292929',
+                height: '100vh',
+                backgroundColor: '#292929',
             },
             image: {
-            backgroundImage: 'url(https://images.pexels.com/photos/5530167/pexels-photo-5530167.jpeg)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: 
-                theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            borderRadius: '10px',
+                backgroundImage: 'url(https://images.pexels.com/photos/5530167/pexels-photo-5530167.jpeg)',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: 
+                    theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderRadius: '10px',
             },
             paper: {
-            margin: theme.spacing(8, 4),
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+                margin: theme.spacing(8, 4),
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
             },
-            avatar: {
-            margin: theme.spacing(1),
-            backgroundColor: '#CC904F',
+                avatar: {
+                margin: theme.spacing(1),
+                backgroundColor: '#CC904F',
             },
             form: {
-            width: '100%', // Fix IE 11 issue.
-            marginTop: theme.spacing(1),
+                width: '100%', // Fix IE 11 issue.
+                marginTop: theme.spacing(1),
             },
             submit: {
-            margin: theme.spacing(3, 0, 2),
+                margin: theme.spacing(3, 0, 2),
             },
         }));
 
@@ -140,22 +140,3 @@ export default function Login(){
         </div>
     );
 }
-
-        // {/* <h1>Login/Reg</h1>
-        // <div className={styles.beerForm}>
-        //     <Link to={"/newuser/"}>Create Account</Link>
-        //     {err && (<p style={{color:'red'}}>{err}</p>)}
-        //     <form onSubmit={handleSubmit}>
-
-        //         <div className={styles.box1}>
-        //             <label>Email</label>
-        //             <input name="email" value={email} onChange={e =>setEmail(e.target.value)}/>
-        //         </div>
-        //         <div className={styles.box1}>
-        //             <label>Password</label>
-        //             <input type="password" name="password" value={password} onChange={e =>setPassword(e.target.value)}/>
-        //         </div>
-        //         <button>Submit</button>
-        //     </form>
-        // </div>
-        // </div> */}

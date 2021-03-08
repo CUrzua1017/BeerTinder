@@ -1,9 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import './Landing.css'
-import Video from "./video.mp4";
-import Button from '@material-ui/core/Button';
 import {Link} from '@reach/router';
+import './Landing.css'
+import Button from '@material-ui/core/Button';
+import Video from "../images/video.mp4";
 import Logo from '../images/beer_tinder_logo.png';
 
 

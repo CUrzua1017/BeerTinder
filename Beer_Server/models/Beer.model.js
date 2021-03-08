@@ -16,7 +16,8 @@ const BeerSchema = new mongoose.Schema({
         minlength: [
             3,
             'The beer type must be at least 3 characters.'
-        ]
+        ],
+        required: false,
     },
     description: {
         type: String,
@@ -38,6 +39,7 @@ const BeerSchema = new mongoose.Schema({
     },
     availability: {
         type: String,
+        required: false
     },
     image: {          
         type: String,

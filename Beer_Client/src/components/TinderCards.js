@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 // import './TinderCards.css'
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,23 +19,16 @@ import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import clsx from 'clsx';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+
+// import BeerLike from '/BeerLike';
 
 function TinderCards() {
-
-    const [beerCard, setBeerCard] = useState([
-        {
-            name: 'Fremont Lush IPA',
-            url: 'https://www.beeroftheday.com/photos/lush_ipa-2689_0.jpg'
-        },
-        {
-            name: 'Georgetown Bodi',
-            url: 'https://www.beeroftheday.com/photos/bodhizafa_ipa-3085_0.jpg'
-        },
-        {
-            name: 'Georgetown Bodi',
-            url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyIJ9oYXsMTmLVkb10AqmMM_VUCw7RxXmYXQ&usqp=CAU'
-        }
-    ]);
+    
+    
     const useStyles = makeStyles((theme) => ({
         icon: {
             marginRight: theme.spacing(2),
@@ -63,9 +57,37 @@ function TinderCards() {
             },
 
         }));
-        
+
         const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         const classes = useStyles();
+        const [expanded, setExpanded] = React.useState(false);
+
+        const handleExpandClick = () => {
+        setExpanded(!expanded);
+        };
+
+        const [beerList, setBeerList] = useState(null);
+        useEffect(()=>{
+            axios.get('http://localhost:8000/api/beers')
+                .then(response => setBeerList(response.data))
+        },[]);
+
+        function handleLike(index){
+            const beerListToUpdate = beerList[index];
+            axios.post('http://localhost:8000/api/beers/'+ beerListToUpdate._id+'/likes')
+                .then(response => {
+                    const updatedBeerList = response.data;
+                    const clonedBeerList = beerList.slice();  // creating a copy of the array for better modification
+                    clonedBeerList[index] = updatedBeerList;
+                    setBeerList(clonedBeerList);
+                })
+        }
+    
+        console.log(beerList)
+    
+        if (beerList === null) return 'Loading...';
+        
+
 
     return (
         <div className="container">
@@ -76,7 +98,7 @@ function TinderCards() {
             <div className={classes.heroContent}>
                 <Container maxWidth="sm">
                     <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                        Beer Dashboard
+                        Beer Dashboard  
                     </Typography>
                     <Typography variant="h5" align="center" color="textSecondary" paragraph>
                         Something short and leading about the collection below—its contents, the creator, etc.
@@ -87,23 +109,32 @@ function TinderCards() {
                 <Container className={classes.cardGrid} maxWidth="md">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
-                    {beerCard.map((beerCard) => (
-                        <Grid item key={beerCard} xs={12} sm={6} md={4}>
+                    {beerList.map((beerList, idx) => (
+                        <Grid item key={beerList} xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
                             <CardMedia
                                 className={classes.cardMedia}
-                                image={beerCard.url}
-                                title={beerCard.name}
+                                image={beerList.image}
+                                title={beerList.name}
                             />
                             <CardContent className={classes.cardContent}>
                                     <Typography gutterBottom variant="h5" component="h2">
-                                        {beerCard.name}
+                                        {beerList.name}
+                                    </Typography>
+                                    <Typography gutterBottom variant="h6" component="h6">
+                                        {beerList.beerType}
                                     </Typography>
                                 <Typography>
-                                    This is a media card. You can use this section to describe the content.
+                                    {beerList.brewery}
+                                    {/* ABV: {beerList.abv} */}
+                                    {/* IBU: {beerList.ibu} */}
                                 </Typography>
                             </CardContent>
                             <CardActions>
+                                {/* <BeerLike/> */}
+                                <p>{beerList.likes} Likes</p>
+                                {/* <button onClick ={() => navigate('/beers/' + beerList._id + '/edit')}>Edit</button> */}
+                                <button onClick = {() => handleLike(idx)}>Like</button>
                                 <IconButton>
                                     <CheckCircleOutlineIcon fontSize="small"/>
                                 </IconButton>

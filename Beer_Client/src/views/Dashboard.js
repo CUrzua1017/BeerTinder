@@ -1,5 +1,6 @@
 import React from 'react';
-// import { Link } from '@reach/router';
+import { Link } from '@reach/router';
+import { Button } from '@material-ui/core';
 // import LogOutButton from '../components/LogOutButton.jsx';
 
 import TinderCards from '../components/TinderCards.js';
@@ -8,6 +9,13 @@ function Dashboard(props){
     return(
         <div>
             <TinderCards />
+
+            <Link to="/beers/list">
+                    <Button variant="outlined" size="large"> Browse Beers </Button>
+            </Link>
+            <Link to="/beers/new">
+                    <Button variant="outlined" size="large"> Add New Beer </Button>
+            </Link>
         </div>
     )
 }

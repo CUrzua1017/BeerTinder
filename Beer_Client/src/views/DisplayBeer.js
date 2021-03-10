@@ -41,6 +41,7 @@ function DisplayBeer(props){
                 <p> Description: {beerToDisplay.description}</p>
                 <p> ABV: {beerToDisplay.abv}</p>
                 <p> IBU: {beerToDisplay.ibu}</p>
+                <p> Availability: {beerToDisplay.availability}</p>
                 <p> Tastinng Notes: {beerToDisplay.tastingNotes}</p>
 
                 

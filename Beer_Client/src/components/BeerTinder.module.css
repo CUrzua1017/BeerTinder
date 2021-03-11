@@ -2,7 +2,7 @@
 /* BEER FORM */
 .beerForm{
     vertical-align: center;
-    /* width: 400px; */
+    width: 400px;
     margin: 10px auto;
     outline: 1px solid black;
     padding: 20px;
